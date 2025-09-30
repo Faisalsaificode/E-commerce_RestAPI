@@ -1,19 +1,14 @@
-
-// 1. Import multer.
 import multer from 'multer';
-import path from "path";
-import fs from "fs";
+import path from 'path';
 
-// 2. Configure storage with filename and location.
 const storage = multer.diskStorage({
-    destination: (req, file, cb)=>{
-        cb(null, './uploads/');
+    destination: (req, file, cb) => {
+        cb(null, path.join(process.cwd(), 'uploads')); // safer absolute path
     },
-    filename:(req, file, cb)=>{
-        cb(null, new Date().toISOString() + file.originalname);
+    filename: (req, file, cb) => {
+        const timestamp = new Date().toISOString().replace(/:/g, '-'); // remove colons
+        cb(null, `${timestamp}-${file.originalname}`);
     },
 });
 
-export const upload = multer({
-    storage: storage,
-});
+export const upload = multer({ storage });

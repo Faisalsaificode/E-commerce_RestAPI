@@ -11,10 +11,11 @@ export default class ProductModel{
     }
 
     static add(product){
-      product.id=products.length+1;
-      product.push(product);
-      return product;
-    }
+  product.id = products.length + 1;
+  products.push(product);
+  return product;
+}
+
 
     static GetAll(){
         return products;
