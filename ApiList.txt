@@ -1,6 +1,13 @@
 ProductController
-Get Products
-Add a Products
-Get one Products
-Rate Products
-filter Products
+Get Products - Done.
+Add a product - Done.
+Get one product - Done.
+Filter Product - Done.
+Rate product.
+Add items to Cart
+Get items of cart
+Remove items from cart.
+
+UserController
+Signup - Email, Name, Password, TypeOfUser(customer, seller)
+Signin - (Email, Password)
