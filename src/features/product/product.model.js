@@ -1,3 +1,5 @@
+import UserModel from "../user/user.model.js";
+
 export default class ProductModel {
   constructor(
     id,
@@ -24,9 +26,7 @@ export default class ProductModel {
   }
 
   static get(id) {
-    const product = products.find(
-      (i) => i.id == id
-    );
+    const product = products.find((i) => i.id == id);
     return product;
   }
 
@@ -37,43 +37,78 @@ export default class ProductModel {
   static filter(minPrice, maxPrice, category) {
     const result = products.filter((product) => {
       return (
-        (!minPrice ||
-          product.price >= minPrice) &&
-        (!maxPrice ||
-          product.price <= maxPrice) &&
-        (!category ||
-          product.category == category)
+        (!minPrice || product.price >= minPrice) &&
+        (!maxPrice || product.price <= maxPrice) &&
+        (!category || product.category == category)
       );
     });
     return result;
   }
+
+  static rateProduct(userID, productID, rating) {
+    
+    // 1 validating user and product
+    const user = UserModel.getAll().find((u) => u.id == userID);
+    if (!user) {
+      return "User not found";
+    }
+    const product = products.find((p) => p.id == productID);
+    if (!product) {
+      return "product not found";
+    }
+
+    // check if there is any rating and if not then add rating array
+
+    if(!product.ratings){
+      product.ratings = [];
+      product.ratings.push({
+        userID: userID,
+        rating: rating,
+      });
+    }else{
+  //check if user rating is already available
+  const existingRatingIndex = product.ratings.findIndex(r => r.userID == userID);
+  if (existingRatingIndex >= 0){
+    product.ratings[existingRatingIndex] = {
+      userID: userID,
+      rating: rating,
+    }
+  }else{
+    product.ratings.push({
+      userID: userID,
+      rating: rating,
+    });
+  }
 }
+
+  };
+};
 
 var products = [
   new ProductModel(
     1,
-    'Product 1',
-    'Description for Product 10',
+    "Product 1",
+    "Description for Product 10",
     19.99,
-    'https://m.media-amazon.com/images/I/51-nXsSRfZL._SX328_BO1,204,203,200_.jpg',
-    'Category1'
+    "https://m.media-amazon.com/images/I/51-nXsSRfZL._SX328_BO1,204,203,200_.jpg",
+    "Category1"
   ),
   new ProductModel(
     2,
-    'Product 2',
-    'Description for Product 2',
+    "Product 2",
+    "Description for Product 2",
     29.99,
-    'https://m.media-amazon.com/images/I/51xwGSNX-EL._SX356_BO1,204,203,200_.jpg',
-    'Category2',
-    ['M', 'XL']
+    "https://m.media-amazon.com/images/I/51xwGSNX-EL._SX356_BO1,204,203,200_.jpg",
+    "Category2",
+    ["M", "XL"]
   ),
   new ProductModel(
     3,
-    'Product 3',
-    'Description for Product 3',
+    "Product 3",
+    "Description for Product 3",
     39.99,
-    'https://m.media-amazon.com/images/I/31PBdo581fL._SX317_BO1,204,203,200_.jpg',
-    'Category3',
-    ['M', 'XL', 'S']
+    "https://m.media-amazon.com/images/I/31PBdo581fL._SX317_BO1,204,203,200_.jpg",
+    "Category3",
+    ["M", "XL", "S"]
   ),
 ];
