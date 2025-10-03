@@ -27,18 +27,16 @@ export default class UserModel {
     return user;
   }
 
-  static getAll(){
+  static getAll() {
     return users;
   }
 }
 
-
-
-let users = [
+var users = [
   {
     id: 1,
     name: 'Seller User',
-    email: 'seller@ecom.com',
+    email: 'seller@gmail.com',
     password: 'Password1',
     type: 'seller',
   },
