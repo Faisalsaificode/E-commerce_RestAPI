@@ -42,7 +42,7 @@ var users = [
   },
   {
     id: 2,
-    name: 'customer User',
+    name: 'Customer User',
     email: 'customer@gmail.com',
     password: 'Password',
     type: 'customer',

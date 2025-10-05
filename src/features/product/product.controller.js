@@ -21,19 +21,22 @@ export default class ProductController {
   }
 
   rateProduct(req, res) {
-    const userID = req.query.userID
+    const userID = req.query.userID;
     const productID = req.query.productID;
-    const rating  = req.query.rating;
-    const error =  ProductModel.rateProduct(
+    const rating = req.query.rating;
+    const error = ProductModel.rateProduct(
       userID,
-      productID,
+      productID, 
       rating
-    );
-    if(error){
-      return res.status(400).send(error);
-    }else{
-      return res.status(200).send("Rating has been added")
-    }
+      );
+      console.log(error);
+      if(error) {
+        return res.status(400).send(error);
+      }else{
+        return res
+        .status(200)
+        .send('Rating has been added');
+      }
   }
 
   getOneProduct(req, res) {
@@ -47,7 +50,6 @@ export default class ProductController {
   }
 
   filterProducts(req, res) {
-    console.log(res.query)
     const minPrice = req.query.minPrice;
     const maxPrice = req.query.maxPrice;
     const category = req.query.category;
