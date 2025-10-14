@@ -1,3 +1,21 @@
 Tue Oct 07 2025 12:21:16 GMT+0530 (India Standard Time). Log Data: "/api/users/signin - {\"email\":\"customer@gmail.com\",\"password\":\"Password\"}"
 Tue Oct 07 2025 12:21:25 GMT+0530 (India Standard Time). Log Data: "/api/users/signin - {\"email\":\"customer@gmail.com\",\"password\":\"Password\"}"
 Tue Oct 07 2025 12:21:59 GMT+0530 (India Standard Time). Log Data: "/api/products - {}"
+
+ Mon Oct 13 2025 12:49:10 GMT+0530 (India Standard Time) - /api/users/signup - {"email":"faisal@gmail.com","password":"Password","name":"faisal","type":"seller"}
+ Mon Oct 13 2025 12:50:31 GMT+0530 (India Standard Time) - /api/users/signup - {"email":"faisal@gmail.com","password":"Password","name":"faisal","type":"seller"}
+ Mon Oct 13 2025 12:52:07 GMT+0530 (India Standard Time) - /api/users/signup - {"email":"faisal@gmail.com","password":"Password","name":"faisal","type":"seller2"}
+ Mon Oct 13 2025 13:49:33 GMT+0530 (India Standard Time) - /api/users/signup - {"email":"faisal@gmail.com","password":"Password","name":"faisal","type":"seller2"}
+ Mon Oct 13 2025 13:52:28 GMT+0530 (India Standard Time) - /api/users/signup - {"email":"faisal@gmail.com","password":"Password","name":"faisal","type":"seller2"}
+ Mon Oct 13 2025 13:52:39 GMT+0530 (India Standard Time) - /api/users/signup - {"email":"faisal@gmail.com","password":"Password","name":"faisal","type":"seller2"}
+ Tue Oct 14 2025 12:15:33 GMT+0530 (India Standard Time) - / - {}
+ Tue Oct 14 2025 12:15:33 GMT+0530 (India Standard Time) - /favicon.ico - {}
+ Tue Oct 14 2025 12:15:47 GMT+0530 (India Standard Time) - /api/docs - {}
+ Tue Oct 14 2025 12:24:42 GMT+0530 (India Standard Time) - /api/users/signup - {"email":"faisal@gmail.com","password":"Password","name":"faisal","type":"seller3"}
+ Tue Oct 14 2025 12:25:53 GMT+0530 (India Standard Time) - /api/users/signup - {"email":"faisal@gmail.com","password":"Password","name":"faisal","type":"seller3"}
+ Tue Oct 14 2025 12:32:16 GMT+0530 (India Standard Time) - /api/users/signup - {}
+ Tue Oct 14 2025 12:32:52 GMT+0530 (India Standard Time) - /api/users/signup - {"email":"faisal@gmail.com","password":"Password","name":"faisal","type":"seller2"}
+ Tue Oct 14 2025 12:40:33 GMT+0530 (India Standard Time) - /api/users/signup - {"email":"faisal@gmail.com","password":"Password","name":"faisal","type":"seller2"}
+ Tue Oct 14 2025 12:47:45 GMT+0530 (India Standard Time) - /api/users/signup - {"email":"faisal@gmail.com","password":"Password","name":"faisal","type":"seller2"}
+ Tue Oct 14 2025 12:48:18 GMT+0530 (India Standard Time) - /api/products - {}
+ Tue Oct 14 2025 12:48:37 GMT+0530 (India Standard Time) - /api/products - {}
