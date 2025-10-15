@@ -1,20 +1,26 @@
 // src/middlewares/jwt.middleware.js
-import jwt from 'jsonwebtoken';
+import jwt from "jsonwebtoken";
 
 export default function jwtAuth(req, res, next) {
   try {
-    const auth = req.headers.authorization || '';
-    if (!auth.startsWith('Bearer ')) {
-      return res.status(401).send('Authorization header missing or malformed');
-    }
-    const token = auth.split(' ')[1].trim();
-    const payload = jwt.verify(token, process.env.JWT_SECRET); // same secret used for signing
+    // 🧩 Accept token directly (without "Bearer ")
+    const token =
+      req.headers.authorization ||
+      req.headers.token ||  // optional alternate header
+      null;
 
-    // attach what you need downstream
+    if (!token) {
+      return res.status(401).send("Authorization token missing");
+    }
+
+    // ✅ verify token directly (no split, no Bearer)
+    const payload = jwt.verify(token.trim(), process.env.JWT_SECRET);
+
+    // attach user info
     req.userID = payload.userID || payload.id || payload._id;
     req.email = payload.email;
-    return next();
+    next();
   } catch (err) {
-    return res.status(401).send('Invalid or expired token');
+    return res.status(401).send("Invalid or expired token");
   }
 }
