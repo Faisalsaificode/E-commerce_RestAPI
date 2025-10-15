@@ -1,20 +1,21 @@
-// 1. Import multer.
 import multer from 'multer';
+import path from 'path';
+import fs from 'fs';
 
-// 2. Configure storage with filename and location.
+const uploadDir = path.resolve('uploads');
+if (!fs.existsSync(uploadDir)) {
+  fs.mkdirSync(uploadDir);
+}
 
 const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, './uploads/');
+  destination: function (req, file, cb) {
+    cb(null, uploadDir);
   },
-  filename: (req, file, cb) => {
-    cb(
-      null,
-      new Date().toISOString() + file.originalname
-    );
+  filename: function (req, file, cb) {
+    // unique name: <timestamp>-<original>
+    cb(null, Date.now() + '-' + file.originalname.replace(/\s+/g, '_'));
   },
 });
 
-export const upload = multer({
-  storage: storage,
-});
+export const upload = multer({ storage });
+export default upload;

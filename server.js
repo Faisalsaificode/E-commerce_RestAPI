@@ -1,7 +1,9 @@
+import "./env.js";
 // 1. Import Exprerss
 import express from 'express';
 import swagger from 'swagger-ui-express';
 import cors from 'cors';
+
 
 import productRouter from './src/features/product/product.routes.js';
 import userRouter from './src/features/user/user.routes.js';
@@ -13,6 +15,9 @@ import { ApplicationError } from './src/error-handler/applicationError.js';
 import {connectToMongoDB} from './src/config/mongodb.js';
 // 2. Create Server
 const server = express();
+
+//load the all environement application
+
 
 // CORS policy configuration
 

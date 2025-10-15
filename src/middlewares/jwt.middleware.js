@@ -1,28 +1,20 @@
+// src/middlewares/jwt.middleware.js
 import jwt from 'jsonwebtoken';
-const jwtAuth = (req, res, next)=>{
-    // 1. Read the token.
-    const token = req.headers['authorization'];
 
-    // 2. if no token, return the error.
-    if(!token){
-        return res.status(401).send('Unauthorized');
+export default function jwtAuth(req, res, next) {
+  try {
+    const auth = req.headers.authorization || '';
+    if (!auth.startsWith('Bearer ')) {
+      return res.status(401).send('Authorization header missing or malformed');
     }
-    // 3. check if token is valid.
-    try{
-        const payload = jwt.verify(
-            token,
-            "AIb6d35fvJM4O9pXqXQNla2jBCH9kuLz"
-        );
-        req.userID = payload.userID;
-        console.log(payload);
-    } catch(err){
-        // 4. return error.
-        console.log(err);
-        return res.status(401).send('Unauthorized');
-    }
+    const token = auth.split(' ')[1].trim();
+    const payload = jwt.verify(token, process.env.JWT_SECRET); // same secret used for signing
 
-    // 5. call next middleware.
-    next();
-};
-
-export default jwtAuth;
+    // attach what you need downstream
+    req.userID = payload.userID || payload.id || payload._id;
+    req.email = payload.email;
+    return next();
+  } catch (err) {
+    return res.status(401).send('Invalid or expired token');
+  }
+}

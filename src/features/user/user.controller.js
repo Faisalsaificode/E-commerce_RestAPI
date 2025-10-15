@@ -40,13 +40,13 @@ const hashedPassword = await bcrypt.hash(password, 12)
         // 2. Compare password password with hashed password.
         const result = await bcrypt.compare(req.body.password, user.password);
         if(result){
-          // 3. Create token.
+  // 3. Create token.
           const token = jwt.sign(
             {
-              userID: result.id,
-              email: result.email,
+              userID: user._id,
+              email: user.email,
             },
-            'AIb6d35fvJM4O9pXqXQNla2jBCH9kuLz',
+            process.env.JWT_SECRET,
             {
               expiresIn: '1h',
             }
