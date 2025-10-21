@@ -45,6 +45,7 @@ class ProductRepository{
         }
     }
 
+    //products should have min prce specified and category
     async filter(minPrice, maxPrice, category){
         try{
             const db = getDB();
@@ -53,11 +54,10 @@ class ProductRepository{
             if(minPrice){
                 filterExpression.price = {$gte: parseFloat(minPrice)}
             }
-            if(maxPrice){
-                filterExpression.price = {...filterExpression.price, $lte: parseFloat(maxPrice)}
-            }
+            
             if(category){
-                filterExpression.category=category;
+                filterExpression = {$and:[{category}.filterExpression]}
+                // filterExpression.category=category;
             }
             return await collection.find(filterExpression).toArray();
             

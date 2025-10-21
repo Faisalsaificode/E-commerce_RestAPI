@@ -48,6 +48,8 @@ swagger.setup(apiDocs)
 
 server.use(loggerMiddleware);
 
+server.use('/api/orders', jwtAuth, orderRouter);
+
 server.use(
   '/api/products',
   jwtAuth,

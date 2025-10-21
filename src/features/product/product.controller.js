@@ -89,7 +89,6 @@ export default class ProductController {
     const category = req.query.category;
     const result = await this.productRepository.filter(
       minPrice,
-      maxPrice,
       category
     );
     res.status(200).send(result);
